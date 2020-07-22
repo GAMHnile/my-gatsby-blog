@@ -1,11 +1,19 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import styled from 'styled-components';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+`
+const BigTitle = styled.h3`
+  margin-bottom: 20px;
+`;
 
 export default  ({data}) => {
-  console.log(data);
+
   return(
   <Layout>
     <SEO title="Home" />
@@ -15,7 +23,9 @@ export default  ({data}) => {
     {
       data.allMarkdownRemark.edges.map(({node})=>(
         <div key={Node.id}>
-          <span>{node.frontmatter.title} - {node.frontmatter.date}</span>
+        <LinkStyled to={node.fields.slug} >
+          <BigTitle>{node.frontmatter.title} - {node.frontmatter.date}</BigTitle>
+        </LinkStyled>
           <p>{node.excerpt}</p>
         </div>
       ))
@@ -31,9 +41,12 @@ export default  ({data}) => {
 
 export const data = graphql` 
 query {
-  allMarkdownRemark {
+  allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
     edges {
       node {
+        fields{
+          slug
+        }
         id
         excerpt
         frontmatter {
