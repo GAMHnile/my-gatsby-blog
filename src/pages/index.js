@@ -22,7 +22,7 @@ export default  ({data}) => {
     <h4>{`The total number of posts is ${data.allMarkdownRemark.totalCount}`}</h4>
     {
       data.allMarkdownRemark.edges.map(({node})=>(
-        <div key={Node.id}>
+        <div key={node.id}>
         <LinkStyled to={node.fields.slug} >
           <BigTitle>{node.frontmatter.title} - {node.frontmatter.date}</BigTitle>
         </LinkStyled>
