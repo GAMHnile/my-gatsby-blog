@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `George's Gatsby blog`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `Welcome to George's blog, follow my journey as a Nigerian Developer`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -20,6 +20,7 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages`,
       },
     },
+    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,

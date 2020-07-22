@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: GAMHnile/my-gatsby-blog
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/markdown-pages
+    create: true
+    fields:
+      - { name: description, label: Description }
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
